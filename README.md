@@ -13,4 +13,5 @@ chmod ug+x install.sh
 ./install.sh -OPTIONAL_FLAG
 ```
 -f  force to create a new link. Old config file will be renamed as "config_file.old"
+
 -h	print help menu
