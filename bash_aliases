@@ -15,7 +15,7 @@ alias l='ls -CF'
 # my basic aliases
 alias kbsk='setxkbmap sk qwerty'
 alias tt='cd /tmp/tst/'
-alias dtt='cd /home/sorigx/Documents/tmp'
+alias dtt='cd $HOME/Documents/tmp'
 alias nv='nvim'
 alias nvm='nvim'
 alias vlcd='devour vlc'
@@ -61,3 +61,6 @@ alias cdwm='cd ~/.local/src/dwm'
 # C development
 alias valgrind-mem-check='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
 alias cppcheck-ultra='cppcheck --enable=warning,performance,unusedFunction --error-exitcode=1'
+
+# others
+alias currdate='date "+%Y-%b/%m-%d, %a, %H:%M"'

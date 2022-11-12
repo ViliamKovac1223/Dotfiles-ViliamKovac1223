@@ -10,6 +10,8 @@ if [ ! -d /tmp/tst ]; then
 fi
 
 xset b off # get rid of noise while deleting nothing
+setterm -blength 0
+set bell-style none
 xset -b 
 
 # enable clicks with touchpad
@@ -55,3 +57,4 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+. "$HOME/.cargo/env"
