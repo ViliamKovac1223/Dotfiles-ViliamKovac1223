@@ -7,6 +7,17 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# battery life aliases
+alias bat0life="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep capacity | awk '{print \$2}'"
+alias bat1life="upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep capacity | awk '{print \$2}'"
+# alias bat1life='upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep capacity | awk '{print \$2}''
+
+alias xv='xhost +SI:localuser:viliam'
+# alias wineGe='/home/sorig/.local/share/lutris/runners/wine/lutris-GE-Proton8-7-x86_64/bin/wine'
+# alias wineGe='firejail /home/sorig/.local/share/lutris/runners/wine/lutris-GE-Proton8-7-x86_64/bin/wine --profile=/etc/firejail/wine.profile'
+# alias wineGe='firejail /home/sorig/.local/share/lutris/runners/wine/lutris-GE-Proton8-7-x86_64/bin/wine'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -16,6 +27,7 @@ alias l='ls -CF'
 alias kbsk='setxkbmap sk qwerty'
 alias tt='cd /tmp/tst/'
 alias dtt='cd $HOME/Documents/tmp'
+# alias nv='devour neovide'
 alias nv='nvim'
 alias nvm='nvim'
 alias vlcd='devour vlc'
@@ -51,7 +63,7 @@ alias gitPu='git pull'
 alias glog='git log --all --graph --decorate --oneline'
 
 # cd aliases
-alias czap='cd ~/Documents/c/tuke/zs1/prog-2022/'
+alias cskyrim='cd "/home/sorig/.wine/drive_c/Program Files (x86)/Mr DJ/The Elder Scrolls V Skyrim Legendary Edition"'
 
 # mining a monero
 alias xrig="xmrig -o gulf.moneroocean.stream:10128 -u 4AYxh7FPLqvcqV3z5bK2px2P8zUcvysVNR9MiixKFUNUCngqv7as1HrGV2NhJGR9KQe2bM4vVAgcBYtKe2j2PtVi79bUs1t -p youShouldNotSeeThisName --cpu-max-threads-hint 50"

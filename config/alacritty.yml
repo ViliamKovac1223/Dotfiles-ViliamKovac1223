@@ -120,8 +120,8 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
   normal:
-    #family: monospace
-    family: Source Code Pro
+    family: monospace
+    # family: Source Code Pro
     style: Regular
 
     # The `style` can be specified to pick a specific face.
@@ -130,8 +130,8 @@ font:
   # Bold font face
   # bold:
   bold:
-    family: Source Code Pro
-    #family: monospace
+    family: monospace
+    # family: Source Code Pro
     style: Bold
     # Font family
     #
@@ -146,8 +146,8 @@ font:
   # Italic font face
   # italic:
   intalic:
-    family: Source Code Pro
-    #family: monospace
+    family: monospace
+    # family: Source Code Pro
     style: Intalic
     # Font family
     #

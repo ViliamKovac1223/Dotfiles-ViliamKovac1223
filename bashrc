@@ -5,6 +5,8 @@
 # |____/ \___/|_|  |_|\__, |\___/____/ \___/
 #                     |___/
 
+# xhost +SI:localuser:viliam # add another user to X list, so they can run gui apps on the system too
+
 # set vim mode in bash
 set -o vi
 
@@ -17,7 +19,7 @@ bind -m vi-insert 'Control-l: clear-screen'
 color_prompt=yes;
 
 # color vim and another stuff
-PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1";
+# PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1";
 
 # If not running interactively, don't do anything
 case $- in
@@ -46,11 +48,13 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # prompt 
-if [ "$color_prompt" = yes ]; then
-  PS1="\[\e[30m\]\[\e[42m\]\u@\h\[\e[44m\]\[\e[32m\]"$'\uE0B0'"\[\e[30m\]\w\[\e[46m\]\[\e[34m\]"$'\uE0B0'"\[\e[30m\]$ \[\e[00m\]\[\e[36m\]"$'\uE0B0'"\[\e[00m\]"
-else
-  PS1="\[\e[30m\]\[\e[42m\]\u@\h\[\e[44m\]\[\e[32m\]"$'\uE0B0'"\[\e[30m\]\w\[\e[46m\]\[\e[34m\]"$'\uE0B0'"\[\e[30m\]$ \[\e[00m\]\[\e[36m\]"$'\uE0B0'"\[\e[00m\]"
-fi
+# if [ "$color_prompt" = yes ]; then
+  # PS1="\[\e[30m\]\[\e[42m\]\u@\h\[\e[44m\]\[\e[32m\]"$'\uE0B0'"\[\e[30m\]\w\[\e[46m\]\[\e[34m\]"$'\uE0B0'"\[\e[30m\]$ \[\e[00m\]\[\e[36m\]"$'\uE0B0'"\[\e[00m\]"
+# else
+  # PS1="\[\e[30m\]\[\e[42m\]\u@\h\[\e[44m\]\[\e[32m\]"$'\uE0B0'"\[\e[30m\]\w\[\e[46m\]\[\e[34m\]"$'\uE0B0'"\[\e[30m\]$ \[\e[00m\]\[\e[36m\]"$'\uE0B0'"\[\e[00m\]"
+# fi
+
+PS1='\[\033[1;32m\]\[\033[1;34m\]\w\[\033[0m\] \$ ' # back up prompt
 
 unset color_prompt force_color_prompt
 
@@ -77,4 +81,25 @@ fi
 if [ -d "$HOME/Documents/python/save/term-streamer" ]; then
 	export PATH="$HOME/Documents/python/save/term-streamer:$PATH"
 fi
+
+# PATH="/home/sorig/.local/bin:/home/sorig/Documents/python/save/term-streamer:/home/sorig/.local/bin:/home/sorig/script/availableFromSystem:/home/sorig/Games/airshipper-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
+
+export FZF_DEFAULT_COMMAND="rg --files -- hidden --follow --glob '!.git'"
+. "$HOME/.cargo/env"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sorig/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sorig/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sorig/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sorig/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
