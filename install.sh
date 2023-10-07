@@ -1,6 +1,6 @@
 #!/bin/sh
 
-back_up_old_config() { # back up config file before linking new
+back_up_old_config() { # Back up config file before linking new
 	if [ -f "$HOME/.$1" ]; then
 		mv "$HOME/.$1" "$HOME/.$1.old"
 	fi
@@ -8,7 +8,7 @@ back_up_old_config() { # back up config file before linking new
 
 FORCE=false
 
-optstring=":fh" # allowed flags
+optstring=":fh" # Allowed flags
 
 # parse arguments
 while getopts ${optstring} arg; do
@@ -30,10 +30,22 @@ while getopts ${optstring} arg; do
 done
 
 FILES=$( \
-	find . ! -path "./.git/*" ! -path "./.git" `# get all files in directory except .git` \
-	| sed -e '/^\.$/d' -e 's/\.\///g' `# get a clean file names` \
-	| grep -vE "LICENSE|README|install.sh" `#filter out LICENSE README install.sh` \
+	find . ! -path "./.git/*" ! -path "./.git" `# Get all files in directory except .git` \
+	| sed -e '/^\.$/d' -e 's/\.\///g' `# Get a clean file names` \
+	| grep -vE "LICENSE|README|install.sh" `# Filter out LICENSE README install.sh` \
 )
+
+# Get allo folders
+FOLDERS=$(
+	find . ! -path "./.git/*" -type d \
+	| grep -v -e "./.git" -e "^\.$" -e ".dist" `# Filter out some folders` \
+	| sed -e 's/\.\///' `# Remove "./" from the start of the string` \
+)
+
+# Create all important folders
+for FOLDER in $FOLDERS; do
+	mkdir -p "$HOME/.$FOLDER"
+done
 
 for FILE in $FILES; do
 	if [ -f "./$FILE" ]; then # link only files
